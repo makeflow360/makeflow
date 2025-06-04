@@ -3,46 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MakeFlow360 - Automatización Futurista</title>
+  <title>MakeFlow360 - Futurista</title>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      height: 100%;
       font-family: 'Segoe UI', sans-serif;
       background: #0a0f1b;
       color: white;
-      scroll-behavior: smooth;
+      overflow-x: hidden;
     }
-    header {
-      background: url('img/banner.jpg') no-repeat center center;
-      background-size: cover;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      text-align: center;
-    }
-    header::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.7);
-    }
-    header h1 {
-      position: relative;
-      font-size: 60px;
-      z-index: 1;
-      animation: fadeInDown 1s ease-out;
-    }
-    header p {
-      position: relative;
-      font-size: 20px;
-      z-index: 1;
-      max-width: 700px;
-      animation: fadeInUp 1.5s ease-out;
+    canvas#particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      top: 0;
+      left: 0;
     }
     nav {
       position: fixed;
@@ -64,10 +42,44 @@
       margin-left: 20px;
       font-weight: bold;
     }
+    header {
+      height: 100vh;
+      background: url('img/banner.jpg') no-repeat center center;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    header::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1;
+    }
+    header h1, header p {
+      position: relative;
+      z-index: 2;
+    }
+    header h1 {
+      font-size: 60px;
+      animation: fadeInDown 1s ease-out;
+    }
+    header p {
+      font-size: 20px;
+      max-width: 700px;
+      animation: fadeInUp 1.5s ease-out;
+    }
     section {
       padding: 100px 20px;
       max-width: 1000px;
       margin: auto;
+      position: relative;
+      z-index: 2;
     }
     .feature {
       margin-bottom: 60px;
@@ -122,62 +134,97 @@
 </head>
 <body>
 
-  <nav>
-    <img src="img/logo.png" alt="MakeFlow360">
-    <div>
-      <a href="#inicio">Inicio</a>
-      <a href="#whatsapp">WhatsApp</a>
-      <a href="#ia">IA</a>
-      <a href="#publicaciones">Redes</a>
-      <a href="#cupones">Cupones</a>
-      <a href="#reservas">Reservas</a>
-    </div>
-  </nav>
+<canvas id="particles-js"></canvas>
 
-  <header id="inicio">
-    <h1>MakeFlow360</h1>
-    <p>La forma más inteligente y automatizada de llevar tu negocio al siguiente nivel.</p>
-  </header>
-
-  <section class="feature" id="whatsapp" data-aos="fade-up">
-    <h2>📲 Automatización por WhatsApp</h2>
-    <p>Envío de fichajes, cupones, recordatorios y mucho más usando ManyChat + Make.</p>
-    <img src="img/whatsapp.png" alt="Automatización WhatsApp" />
-  </section>
-
-  <section class="feature" id="ia" data-aos="fade-up">
-    <h2>🧠 Inteligencia Artificial</h2>
-    <p>Automatiza respuestas, genera textos, vende más usando ChatGPT conectado a tus sistemas.</p>
-    <img src="img/ia.png" alt="IA con ChatGPT" />
-  </section>
-
-  <section class="feature" id="publicaciones" data-aos="fade-up">
-    <h2>📢 Publicaciones automáticas</h2>
-    <p>Gestiona Facebook, Instagram y Google con una hoja de cálculo y Make.</p>
-    <img src="img/publicaciones.png" alt="Publicaciones automáticas" />
-  </section>
-
-  <section class="feature" id="cupones" data-aos="fade-up">
-    <h2>🎟️ Cupones con QR</h2>
-    <p>Generación y validación de promociones QR con datos y control de uso.</p>
-    <img src="img/cupones.png" alt="Cupones con QR" />
-  </section>
-
-  <section class="feature" id="reservas" data-aos="fade-up">
-    <h2>📅 Reservas por WhatsApp</h2>
-    <p>Calendario sincronizado, voz y texto, confirmaciones automáticas por WhatsApp.</p>
-    <img src="img/reservas.png" alt="Reservas por WhatsApp" />
-  </section>
-
-  <div class="cta" data-aos="zoom-in">
-    <a href="https://wa.me/15557353411?text=Hola,%20quiero%20una%20demo%20de%20MakeFlow360">Solicita tu demo</a>
+<nav>
+  <img src="img/logo.png" alt="MakeFlow360">
+  <div>
+    <a href="#inicio">Inicio</a>
+    <a href="#whatsapp">WhatsApp</a>
+    <a href="#ia">IA</a>
+    <a href="#publicaciones">Redes</a>
+    <a href="#cupones">Cupones</a>
+    <a href="#reservas">Reservas</a>
   </div>
+</nav>
 
-  <footer>
-    © 2025 MakeFlow360 · Automatización Futurista
-  </footer>
+<header id="inicio">
+  <h1>MakeFlow360</h1>
+  <p>La forma más inteligente y automatizada de llevar tu negocio al siguiente nivel.</p>
+</header>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>AOS.init();</script>
+<section class="feature" id="whatsapp" data-aos="fade-up">
+  <h2>📲 Automatización por WhatsApp</h2>
+  <p>Envío de fichajes, cupones, recordatorios y mucho más usando ManyChat + Make.</p>
+  <img src="img/whatsapp.png" alt="Automatización WhatsApp" />
+</section>
+
+<section class="feature" id="ia" data-aos="fade-up">
+  <h2>🧠 Inteligencia Artificial</h2>
+  <p>Automatiza respuestas, genera textos, vende más usando ChatGPT conectado a tus sistemas.</p>
+  <img src="img/ia.png" alt="IA con ChatGPT" />
+</section>
+
+<section class="feature" id="publicaciones" data-aos="fade-up">
+  <h2>📢 Publicaciones automáticas</h2>
+  <p>Gestiona Facebook, Instagram y Google con una hoja de cálculo y Make.</p>
+  <img src="img/publicaciones.png" alt="Publicaciones automáticas" />
+</section>
+
+<section class="feature" id="cupones" data-aos="fade-up">
+  <h2>🎟️ Cupones con QR</h2>
+  <p>Generación y validación de promociones QR con datos y control de uso.</p>
+  <img src="img/cupones.png" alt="Cupones con QR" />
+</section>
+
+<section class="feature" id="reservas" data-aos="fade-up">
+  <h2>📅 Reservas por WhatsApp</h2>
+  <p>Calendario sincronizado, voz y texto, confirmaciones automáticas por WhatsApp.</p>
+  <img src="img/reservas.png" alt="Reservas por WhatsApp" />
+</section>
+
+<div class="cta" data-aos="zoom-in">
+  <a href="https://wa.me/15557353411?text=Hola,%20quiero%20una%20demo%20de%20MakeFlow360">Solicita tu demo</a>
+</div>
+
+<footer>
+  © 2025 MakeFlow360 · Automatización Futurista
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init();</script>
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script>
+  particlesJS("particles-js", {
+    particles: {
+      number: { value: 60 },
+      color: { value: "#60c4ff" },
+      shape: { type: "circle" },
+      opacity: { value: 0.3 },
+      size: { value: 3 },
+      line_linked: {
+        enable: true,
+        distance: 130,
+        color: "#60c4ff",
+        opacity: 0.25,
+        width: 1
+      },
+      move: {
+        enable: true,
+        speed: 1.6,
+        direction: "none",
+        random: false,
+        out_mode: "bounce"
+      }
+    },
+    interactivity: {
+      detect_on: "canvas",
+      events: {
+        onhover: { enable: true, mode: "grab" }
+      }
+    },
+    retina_detect: true
+  });
+</script>
 </body>
 </html>
